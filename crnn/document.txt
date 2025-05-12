@@ -1,0 +1,31 @@
+combines cnn + rnn
+crnn - what comes in what order
+sequential prediction.
+
+
+🔄 self.lstm1 and self.lstm2 — Recurrent Part
+These are LSTM (Long Short-Term Memory) layers:
+They remember things from previous steps.
+Helpful for reading letters in order, e.g., recognizing A and B together forms "AB".
+🧠 bidirectional=True: Looks forward and backward to understand better.
+
+🔤 self.embedding = nn.Linear(...)
+This layer:
+Converts the LSTM output into actual letter predictions.
+nclass = 38 means there are 38 possible characters (like letters, numbers, special tokens).
+
+forward(self, x) – How it works step by step
+x: Input image goes into self.cnn → becomes a sequence of feature vectors.
+conv.squeeze(2): Removes the height dimension (set to 1).
+permute(2, 0, 1): Rearranges the shape to match what LSTM expects:
+Sequence length (width)
+Batch size
+Features
+Then LSTM reads the sequence and builds understanding.
+self.embedding: Final layer predicts what character each time step represents.
+
+
+cnn - zurgas featureg n salgaj avna.
+rnn - tsag, darallar bu zuuness baruun chigleld featureuudig sequence blgood surna.
+ctc layer - aldaag saijruulna, urt het ih urd featureg bagasgah zereg
+

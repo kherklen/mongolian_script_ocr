@@ -1,0 +1,98 @@
+
+
+useful code implementations :
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+iris = load_iris()
+X = iris.data  # Features
+y = iris.target  # Labels
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred, target_names=iris.target_names))
+
+
+1. Logistic Regression (Classification)
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+it draws a line that seperated two or more classes.
+
+
+2. Decision Tree (Classification or Regression)
+from sklearn.tree import DecisionTreeClassifier  # or DecisionTreeRegressor
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+yes/no questions.
+
+
+3. Random Forest (Ensemble Method)
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+more than a single decision tree.
+
+
+
+4. Support Vector Machine (SVM)
+from sklearn.svm import SVC 
+model = SVC(kernel='linear')
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+finds the best boundary line that seperates classes as far as apart.
+
+
+
+5. Naive Bayes
+from sklearn.naive_bayes import GaussianNB
+model = GaussianNB()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+magadlalin tomyogoor tootsolol hiine. 
+
+
+6. K-Means Clustering (Unsupervised)
+from sklearn.cluster import KMeans
+model = KMeans(n_clusters=3, random_state=42)
+model.fit(X)
+labels = model.labels_
+similar data points together without any labels.
+
+kNN neighbors.
+k closest data points to the input and votes based on what most of them are.
+
+
+7. Principal Component Analysis (PCA - Dimensionality Reduction)
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+X_reduced = pca.fit_transform(X)
+reduces dara to fewer dimensions while keeping the important data.
+
+
+8. Linear Regression (Regression)
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+fits the straight line through the data to predict values.
+
+
+from sklearn.metrics import accuracy_score, mean_squared_error, classification_report
